@@ -1,11 +1,22 @@
 export default {
     plugins: [
         ['umi-plugin-react', {
-            //TODO
+            antd: true,
+            dva: true,
         }],
     ],
     routes: [{
         path: '/',
-        component: './HelloWorld',
+        routes: [
+            { path: 'artlist',
+              component: './artlist' 
+            },
+        ]
     }],
+    proxy: {
+        '/api': {
+          target: 'http://xiaozhuo.info',
+          changeOrigin: true,
+        },
+    },
 };

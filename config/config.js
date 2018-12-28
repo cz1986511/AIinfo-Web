@@ -7,11 +7,7 @@ export default {
     ],
     routes: [{
         path: '/',
-        routes: [
-            { path: 'artlist',
-              component: './artlist' 
-            },
-        ]
+        component: './index.js',
     }],
     proxy: {
         '/api': {

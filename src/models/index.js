@@ -4,7 +4,14 @@ export default {
   namespace: 'indexlist',
   state: {
     arts: [],
-    weather: {},
+    weather: {
+      daily: [],
+      now: {},
+      suggestion: {
+        car_washing: {},
+        sport: {},
+      },
+    },
     oilinfo: {},
   },
 

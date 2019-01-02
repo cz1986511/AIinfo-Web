@@ -40,13 +40,13 @@ export default class ArtListPage extends Component {
     const car_washing = suggestion.car_washing;
     return (
       <div>
-        <div style={{ padding: '0 27px', }}>
-          <div style={ {backgroundColor: '#F0FFF0',} }>
+        <div style={{ padding: '0 27px' }}>
+          <div style={{ backgroundColor: '#F0FFF0', borderRadius: '18px' }}>
             成都-{now.text}-{now.temperature}°(运动:{sport.brief}|洗车:{car_washing.brief})
           </div>
         </div>
-        <div style={{ padding: '0 27px', }}>
-          <div style={ {backgroundColor: '#F0FFF0',} }>
+        <div style={{ padding: '0 27px' }}>
+          <div style={{ backgroundColor: '#F0FFF0', borderRadius: '18px' }}>
             {oilinfo.updatetime} 四川油价: 92#({oilinfo.oil93})|95#({oilinfo.oil95})|0#({oilinfo.oil0})
           </div>
         </div>
@@ -54,7 +54,7 @@ export default class ArtListPage extends Component {
           this.props.artList.map(art => {
             return (
               <Card key={art.id}>
-                <div key={art.id} style={{ padding: '0 15px',backgroundColor: '#F0FFF0', }}>
+                <div key={art.id} style={{ padding: '0 15px',backgroundColor: '#F0FFF0', borderRadius: '18px' }}>
                   <a href={art.linkUrl} target='_blank'>
                     <div
                       style={{
@@ -64,10 +64,10 @@ export default class ArtListPage extends Component {
                         borderBottom: '1px solid #F6F6F6',
                       }}
                     >{art.title}</div>
-                    <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0', color: '#5B5B5B'}}>
+                    <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0', color: '#5B5B5B' }}>
                       <img style={{ height: '64px', marginRight: '15px' }} src={art.picUrl} alt="" />
                       <div style={{ lineHeight: 1 }}>
-                        <div style={{ marginBottom: '22px', }}>{art.introduction}</div>
+                        <div style={{ marginBottom: '22px' }}>{art.introduction}</div>
                         <div><span>{art.source}</span></div>
                         <div><span>{art.date}</span></div>
                       </div>

@@ -8,6 +8,7 @@
     "build": "umi build"
   },
   "dependencies": {
-    "antd": "^3.11.6"
+    "antd": "^3.12.1",
+    "antd-mobile": "^2.2.8"
   }
 }

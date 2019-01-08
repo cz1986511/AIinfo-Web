@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Card } from 'antd';
+import { Tabs, Icon, BackTop, Alert } from 'antd';
 import { connect } from 'dva';
+import myStyles from './styles.css';
 
 const namespace = 'indexlist';
 
@@ -25,6 +27,8 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+const TabPane = Tabs.TabPane;
+
 @connect(mapStateToProps, mapDispatchToProps)
 export default class ArtListPage extends Component {
   componentDidMount() {
@@ -38,46 +42,48 @@ export default class ArtListPage extends Component {
     const suggestion = weather.suggestion;
     const sport = suggestion.sport;
     const car_washing = suggestion.car_washing;
+    const weatherinfos = oilinfo.updatetime + ' 成都-' + now.text + '-' + now.temperature + '°(运动:' + sport.brief + '|洗车:' + car_washing.brief + ')';
+    const oilinfos = '四川油价: 92#(' + oilinfo.oil93 + ')|95#(' + oilinfo.oil95 + ')|0#(' + oilinfo.oil0 + ')';
     return (
       <div>
-        <div style={{ padding: '0 27px' }}>
-          <div style={{ backgroundColor: '#F0FFF0', borderRadius: '18px' }}>
-            成都-{now.text}-{now.temperature}°(运动:{sport.brief}|洗车:{car_washing.brief})
-          </div>
+        <div className={myStyles.header1}>
+          <Alert message={weatherinfos} type="success" />
+          <Alert message={oilinfos} type="success" />
         </div>
-        <div style={{ padding: '0 27px' }}>
-          <div style={{ backgroundColor: '#F0FFF0', borderRadius: '18px' }}>
-            {oilinfo.updatetime} 四川油价: 92#({oilinfo.oil93})|95#({oilinfo.oil95})|0#({oilinfo.oil0})
-          </div>
-        </div>
-        {
-          this.props.artList.map(art => {
-            return (
-              <Card key={art.id}>
-                <div key={art.id} style={{ padding: '0 15px',backgroundColor: '#F0FFF0', borderRadius: '18px' }}>
-                  <a href={art.linkUrl} target='_blank'>
-                    <div
-                      style={{
-                        lineHeight: '50px',
-                        color: '#336666',
-                        fontSize: 18,
-                        borderBottom: '1px solid #F6F6F6',
-                      }}
-                    >{art.title}</div>
-                    <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0', color: '#5B5B5B' }}>
-                      <img style={{ height: '64px', marginRight: '15px' }} src={art.picUrl} alt="" />
-                      <div style={{ lineHeight: 1 }}>
-                        <div style={{ marginBottom: '22px' }}>{art.introduction}</div>
-                        <div><span>{art.source}</span></div>
-                        <div><span>{art.date}</span></div>
-                      </div>
+        <div className={myStyles.header1}>
+        <Tabs defaultActiveKey="1" type="card">
+            <TabPane tab="文章" key="1">
+            {
+              this.props.artList.map(art => {
+                return (
+                  <Card key={art.id} className={myStyles.article}>
+                    <div key={art.id}>
+                      <a href={art.linkUrl} target='_blank'>
+                        <div className={myStyles.title}>{art.title}</div>
+                        <div className={myStyles.content}>
+                          <img className={myStyles.img} src={art.picUrl} alt="" />
+                          <div className={myStyles.info}>
+                            <div className={myStyles.introduction}>{art.introduction}</div>
+                            <div><span>{art.source}</span></div>
+                            <div><span>{art.date}</span></div>
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
-                </div>
-              </Card>
-            );
-          })
-        }
+                  </Card>
+                );
+              })
+            }
+            </TabPane>
+            <TabPane tab="敬请期待" key="2">页面开发中。。。</TabPane>
+          </Tabs>
+        </div>
+        <div>
+          <BackTop />
+        </div>
+        <div className={myStyles.header1}>
+          <p align="center" className={myStyles.weather}>2019@xiaozhuo.info All Rights Reserved <a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备17024254号</a></p>
+        </div>
       </div>
     );
   }

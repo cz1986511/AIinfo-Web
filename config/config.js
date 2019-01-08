@@ -5,10 +5,12 @@ export default {
             dva: true,
         }],
     ],
-    routes: [{
-        path: '/',
-        component: './index.js',
-    }],
+    routes: [
+        {
+          path: '/',
+          component: './index.js',
+        },
+    ],
     proxy: {
         '/api': {
           target: 'http://xiaozhuo.info',

@@ -172,7 +172,7 @@ export default class ArtListPage extends Component {
           <BackTop />
         </div>
         <div className={myStyles.header1}>
-          <p align="center" className={myStyles.weather}>2019@xiaozhuo.info All Rights Reserved <a href="http://www.miitbeian.gov.cn/" target="_blank">蜀ICP备17024254号</a></p>
+          <p align="center" className={myStyles.weather}>2019@xiaozhuo.info All Rights Reserved <a href="http://www.beian.miit.gov.cn/" target="_blank">蜀ICP备17024254号</a></p>
         </div>
       </div>
     );

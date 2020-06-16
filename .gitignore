@@ -2,3 +2,5 @@ node_modules
 dist
 .umi
 .vscode
+.DS_Store
+.lock
